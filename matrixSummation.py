@@ -40,13 +40,13 @@ def subtract_any_before(after, num_row, num_col):
     return current
 
 
-def create_after(before):
-    row = len(before)
-    col = len(before[0])
-    after_matrix = [[0] * col] * row
+def create_after(before_matrix):
+    row = len(before_matrix)
+    col = len(before_matrix[0])
+    after_matrix = [ [0]*col for i in range(row)]
     for i in range(row):
         for j in range(col):
-            after_matrix[i][j] = matrix_sum_until(before, i, j)
+            after_matrix[i][j] = matrix_sum_until(before_matrix, i, j)
     return after_matrix
 
 
@@ -64,10 +64,13 @@ if __name__ == '__main__':
     # after_rows = int(input().strip())
     # after_columns = int(input().strip())
     before = [[1, 2], [3, 4]]
-    after = [[1, 3], [4, 10]]
-    print("Created After", create_after(before))
+    # after = [[1, 3], [4, 10]]
+    after  = create_after(before)
+    print("Original Matrix :", before)
 
-    print("After", after)
+    print("After Matrix " , after)
+
+    print("Before Matrix ", findBeforeMatrix(after))
 
     # for _ in range(after_rows):
     #     after.append(list(map(int, input().rstrip().split())))
