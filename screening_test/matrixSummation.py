@@ -18,23 +18,36 @@ def findBeforeMatrix(after):
     # Write your code here
     after_rows = len(after)
     after_columns = len(after[0])
+    before_matrix = [ [0]*after_columns for i in range(after_rows)]
+
     for i in range(after_rows):
         for j in range(after_columns):
-            after[i][j] = subtract_any_before(after, i, j)
+            before_matrix[i][j] = subtract_any_before(after, i, j)
 
     # print(after)
-    return after
+    return before_matrix
 
+def get_element_and_handle_negative(after, x, y):
+    if x < 0 or y < 0:
+        return 0
+    else:
+        return after[x][y]
 
 def subtract_any_before(after, num_row, num_col):
-    current = after[num_row][num_col]
-    # print("Current Before", current)
-    for i in range(num_row + 1):
-        for j in range(num_col + 1):
-            if (i == num_row and j == num_col):
-                continue
-            # print("Afte rvalue", after[i][j])
-            current -= after[i][j]
+    x = num_row
+    y = num_col
+    # current = after[x][y] - (after[x-1][y] + (after[x][y-1]-after[x-1][y-1]))
+    # Logic is the above line, using fn to handle index limits
+    subtract_by = get_element_and_handle_negative(after, x-1, y) + (get_element_and_handle_negative(after, x, y-1) -get_element_and_handle_negative(after, x-1, y-1))
+    current = after[x][y] - subtract_by
+
+# print("Current Before", current)
+    # for i in range(num_row + 1):
+    #     for j in range(num_col + 1):
+    #         if (i == num_row and j == num_col):
+    #             continue
+    #         # print("Afte rvalue", after[i][j])
+    #         current -= after[i][j]
 
     # print("Current after ", current )
     return current
