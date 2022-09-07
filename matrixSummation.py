@@ -63,14 +63,14 @@ if __name__ == '__main__':
 
     # after_rows = int(input().strip())
     # after_columns = int(input().strip())
-    before = [[1, 2], [3, 4]]
+    before = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     # after = [[1, 3], [4, 10]]
     after  = create_after(before)
     print("Original Matrix :", before)
 
-    print("After Matrix " , after)
+    print("After Matrix ", after)
 
-    print("Before Matrix ", findBeforeMatrix(after))
+    print("Generated Before Matrix ", findBeforeMatrix(after))
 
     # for _ in range(after_rows):
     #     after.append(list(map(int, input().rstrip().split())))
