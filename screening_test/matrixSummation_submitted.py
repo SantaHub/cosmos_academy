@@ -8,24 +8,11 @@ import sys
 
 
 #
-# Complete the 'findBeforeMatrix' function below.
+# Complete the 'findBeforeMatrix' fgpunction below.
 #
 # The function is expected to return a 2D_INTEGER_ARRAY.
 # The function accepts 2D_INTEGER_ARRAY after as parameter.
 #
-
-def findBeforeMatrix(after):
-    # Write your code here
-    after_rows = len(after)
-    after_columns = len(after[0])
-    before_matrix = [ [0]*after_columns for i in range(after_rows)]
-
-    for i in range(after_rows):
-        for j in range(after_columns):
-            before_matrix[i][j] = subtract_any_before(after, i, j)
-
-    # print(after)
-    return before_matrix
 
 def get_element_and_handle_negative(after, x, y):
     if x < 0 or y < 0:
@@ -42,6 +29,20 @@ def subtract_any_before(after, num_row, num_col):
     current = after[x][y] - subtract_by
 
     return current
+
+
+def findBeforeMatrix(after):
+    # Write your code here
+    after_rows = len(after)
+    after_columns = len(after[0])
+    before_matrix = [ [0]*after_columns for i in range(after_rows)]
+
+    for i in range(after_rows):
+        for j in range(after_columns):
+            before_matrix[i][j] = subtract_any_before(after, i, j)
+
+    # print(after)
+    return before_matrix
 
 
 if __name__ == '__main__':
