@@ -41,15 +41,6 @@ def subtract_any_before(after, num_row, num_col):
     subtract_by = get_element_and_handle_negative(after, x-1, y) + (get_element_and_handle_negative(after, x, y-1) -get_element_and_handle_negative(after, x-1, y-1))
     current = after[x][y] - subtract_by
 
-# print("Current Before", current)
-    # for i in range(num_row + 1):
-    #     for j in range(num_col + 1):
-    #         if (i == num_row and j == num_col):
-    #             continue
-    #         # print("Afte rvalue", after[i][j])
-    #         current -= after[i][j]
-
-    # print("Current after ", current )
     return current
 
 
